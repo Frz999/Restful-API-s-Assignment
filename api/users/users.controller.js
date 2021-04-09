@@ -52,8 +52,10 @@ function deleteUser(req, res, next) {
 
 function createUser(req, res, next){
     userService.create(req.body)
-        .then(() => res.status(200).json({}))
-        .catch(err => next(err));
+        .then(() => res.sendStatus(201))
+        .catch(err => {
+            next(err)
+        });
 };
 
 

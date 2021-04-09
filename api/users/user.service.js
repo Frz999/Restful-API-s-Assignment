@@ -3,7 +3,6 @@ const config = require('../../config/config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('../../config/db');
-
 const User = db.users;
 
 
@@ -93,3 +92,20 @@ async function deleteUser(email) {
     }
   });
 };
+
+
+//// insert dummy user ////
+
+async function createDummy(userDets) {
+
+    const user = new User({
+      email: userDets.email
+    });
+  
+    if (userDets.password) {
+      user.hash = bcrypt.hashSync(userDets.password, 10);
+    }
+    await user.save();
+};
+
+// createDummy({ email: 'firoz@gmail.com', password: '123456'})

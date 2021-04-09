@@ -4,8 +4,8 @@ let app = express();
 const cors = require('cors')
 const bodyParser = require('body-parser');
 let http = require('http');
-const jwt = require('middleware/jwt')
-const errorHandler = require('middleware/error-handler')
+const jwt = require('./middleware/jwt')
+const errorHandler = require('./middleware/error-handler')
 let server = http.createServer(app);
 
 app.use(bodyParser.urlencoded({
@@ -33,3 +33,5 @@ const port = process.env.NODE_ENV === 'production' ? process.env.PORT : 9000;
 server.listen(port, () => {
     console.log(` server started on port: ${port}`);
 });
+
+module.exports = {app,server};
