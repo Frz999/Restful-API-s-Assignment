@@ -29,7 +29,6 @@ describe('POST /users/authenticate', () => {
     it('should authenticate the user and return JWT token', async () => {
         const res = await request(app)
             .post('/users/authenticate')
-            .set('Authorization', `Bearer ${token}`)
             .send({
                 email: 'firoz@gmail.com',
                 password: '123456',
