@@ -37,7 +37,7 @@ async function getAll(req) {
   const { page = 1, limit = 10 } = req.query;
 
   try {
-    const posts = await User.find()
+    const users = await User.find()
       .select('-hash')
       .limit(limit * 1)
       .skip((page - 1) * limit)
@@ -45,7 +45,7 @@ async function getAll(req) {
     const count = await User.countDocuments();
 
     return {
-      posts,
+      users,
       totalPages: Math.ceil(count / limit),
       currentPage: page
     }
