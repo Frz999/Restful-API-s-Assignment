@@ -36,7 +36,6 @@ describe('POST /users/authenticate', () => {
         if (res.statusCode !== 200) {
             console.log("POST /users/authenticate : ", res.body);
         }
-        console.log("RESPONSE : ", res.body)
         token = res.body.token;
         expect(res.statusCode).toEqual(200);
         expect(res.body).toHaveProperty('token');
@@ -68,7 +67,7 @@ describe('GET /', () => {
             console.log("GET / : ", res.body);
         }
         expect(res.statusCode).toEqual(200);
-        expect(res.body).toHaveProperty('posts', 'totalPages', 'currentPage');
+        expect(res.body).toHaveProperty('users', 'totalPages', 'currentPage');
     });
 });
 
@@ -121,19 +120,4 @@ afterAll(async (done) => {
         console.log(error);
         done();
     }
-})
-
-
-// async function createDummy(userDets) {
-
-//     const user = new User({
-//       email: userDets.email
-//     });
-
-//     console.log("FUK U BIUCH")
-
-//     if (userDets.password) {
-//       user.hash = bcrypt.hashSync(userDets.password, 10);
-//     }
-//     await user.save();
-// };
+});
